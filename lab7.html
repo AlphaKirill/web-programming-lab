@@ -37,6 +37,17 @@
             document.getElementById('detail').innerHTML = 'Среднее значание: ' + average;
 
         }
+        function addTransparentBlocks() {
+            let blocks2 = document.getElementById('transparent-block');
+            for(let i = 0; i <10; i++) {
+                let block2 = document.createElement('div');
+                block2.style.opacity = i / 10;
+                block2.innerHTML = 'Блок №' + (i+1) + ': Opacity ';
+
+                blocks2.appendChild(block2);
+            }
+
+        }
 
     </script>
 </head>
@@ -52,6 +63,9 @@
         <button onclick="showExchange()">Курс доллара</button>
         <table border="1" id="dollar-exchange"></table>
         <div id="detail"></div>
+
+        <button onclick="addTransparentBlocks()">Создать полупрозрачные блоки</button>
+        <div id="transparent-block"></div>
     </main>
     <footer>
         &copy; Белкин К.В. ФБИ-11, 2курс, 2023
