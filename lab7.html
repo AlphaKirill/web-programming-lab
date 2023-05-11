@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Белкин К.В. Лабораторная 7</title>
     <link rel="stylesheet" href="main.css">
-
+    <style>
+    </style>
     <script>
         function addBlocks() {
             let blocks = document.getElementById('blocks');
@@ -39,14 +40,34 @@
         }
         function addTransparentBlocks() {
             let blocks2 = document.getElementById('transparent-block');
-            for(let i = 0; i <10; i++) {
+            for(let i = 0; i <11; i++) {
                 let block2 = document.createElement('div');
                 block2.style.opacity = i / 10;
-                block2.innerHTML = 'Блок №' + (i+1) + ': Opacity ';
+                block2.innerHTML = ': Opacity ' + (i / 10);
 
                 blocks2.appendChild(block2);
             }
-
+        }
+        function redGreen() {
+            let circle1 = document.getElementById('div2');
+            let user = document.getElementById('user-number');
+            let input = parseInt(user.value);
+            for(let i = input; i>=1; i--) {
+                let shar = document.createElement('div');
+                shar.style.borderRadius = '50%';
+                shar.style.width = '56px';
+                shar.style.height = '56px';
+                shar.style.lineHeight = '55px'
+                shar.style.textIndent = '24px'
+                shar.innerHTML = i;
+            if(i % 2 == 0) {
+                shar.style.backgroundColor = 'orange';
+            }
+            else {
+                shar.style.backgroundColor = 'darkred';
+            }
+            circle1.appendChild(shar);
+            }
         }
 
     </script>
@@ -66,6 +87,13 @@
 
         <button onclick="addTransparentBlocks()">Создать полупрозрачные блоки</button>
         <div id="transparent-block"></div>
+
+        <button onclick="redGreen()">Красное/Зеленое</button>
+        <input type="number" value="5" placeholder="Введите число кругов" min="1" max="20" id="user-number"> min = 1, max 20<br><br>
+        <div id="div2"></div>
+        
+        
+        
     </main>
     <footer>
         &copy; Белкин К.В. ФБИ-11, 2курс, 2023
