@@ -69,6 +69,15 @@
             circle1.appendChild(shar);
             }
         }
+        function tableYm() {
+            let table1 = document.getElementById('table');
+            for(let i = 13; i<=33; i++) {
+                let tr1 = document.createElement('div');
+                tr1.innerHTML = i+'*109='+ i*109;
+
+            table.appendChild(tr1);
+            }
+        }
 
     </script>
 </head>
@@ -88,12 +97,12 @@
         <button onclick="addTransparentBlocks()">Создать полупрозрачные блоки</button>
         <div id="transparent-block"></div>
 
-        <button onclick="redGreen()">Красное/Зеленое</button>
+        <button onclick="redGreen()">Красное/Оранжевое</button>
         <input type="number" value="5" placeholder="Введите число кругов" min="1" max="20" id="user-number"> min = 1, max 20<br><br>
         <div id="div2"></div>
-        
-        
-        
+
+        <button onclick="tableYm()">Таблица умножения на 109</button>
+        <div id="table"></div>
     </main>
     <footer>
         &copy; Белкин К.В. ФБИ-11, 2курс, 2023
