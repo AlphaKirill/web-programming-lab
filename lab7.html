@@ -11,7 +11,7 @@
     <script>
         function addBlocks() {
             let blocks = document.getElementById('blocks');
-            for(let i = 0; i <10; i++) {
+            for (let i = 0; i <10; i++) {
                 let block = document.createElement('div');
                 block.innerHTML = 'Блок №' + (i+1) + ': ' + (2*i**2);
 
@@ -23,7 +23,7 @@
             let exchange = [73.6307,72.7923,72.8949,71.5763,70.8924,
                             70.5991,70.3847,70.0414,70.1217,70.5174];
             let table = document.getElementById('dollar-exchange');
-            for(let i = 0; i < exchange.length; i++) {
+            for (let i = 0; i < exchange.length; i++) {
                 let tr = document.createElement('tr');
                 let td = document.createElement('td');
                 td.innerHTML = exchange[i];
@@ -40,7 +40,7 @@
         }
         function addTransparentBlocks() {
             let blocks2 = document.getElementById('transparent-block');
-            for(let i = 0; i <11; i++) {
+            for (let i = 0; i <11; i++) {
                 let block2 = document.createElement('div');
                 block2.style.opacity = i / 10;
                 block2.innerHTML = ': Opacity ' + (i / 10);
@@ -52,7 +52,7 @@
             let circle1 = document.getElementById('div2');
             let user = document.getElementById('user-number');
             let input = parseInt(user.value);
-            for(let i = input; i>=1; i--) {
+            for (let i = input; i>=1; i--) {
                 let shar = document.createElement('div');
                 shar.style.borderRadius = '50%';
                 shar.style.width = '56px';
@@ -60,7 +60,7 @@
                 shar.style.lineHeight = '55px'
                 shar.style.textIndent = '24px'
                 shar.innerHTML = i;
-            if(i % 2 == 0) {
+            if (i % 2 == 0) {
                 shar.style.backgroundColor = 'orange';
             }
             else {
@@ -71,12 +71,57 @@
         }
         function tableYm() {
             let table1 = document.getElementById('table');
-            for(let i = 13; i<=33; i++) {
+            for (let i = 13; i<=33; i++) {
                 let tr1 = document.createElement('div');
                 tr1.innerHTML = i+'*109='+ i*109;
 
             table.appendChild(tr1);
             }
+        }
+        function kurs() {
+            let price = [1.04, 1.07, 1.06, 1.04, 1.04,
+                        1.05, 1.06, 1.09, 1.10, 1.10];
+            let data = ['12.05.2023', '11.05.2023', '10.05.2023', '08.05.2023', '05.05.2023',
+                        '04.05.2023', '03.05.2023', '02.05.2023', '28.04.2023', '27.04.2023'];
+            let raznosti = ['-', price[1]-price[0], price[2]-price[1], price[3]-price[2], price[4]-price[3],
+                            price[5]-price[4], price[6]-price[5], price[7]-price[6], price[8]-price[7],
+                            price[9]-price[8], price[10]-price[9]];
+            let tableAction = document.getElementById('tableKurs');
+            for (let i = 0 ; i < price.length; i++) {
+                let trk = document.createElement('tr');
+
+                let tdk = document.createElement('td');
+                tdk.innerHTML = data[i];
+                trk.appendChild(tdk);
+
+                let tdk2 = document.createElement('td');
+                tdk2.innerHTML = price[i];
+                trk.appendChild(tdk2);
+        
+                let tdk3 = document.createElement('td');
+                tdk3.innerHTML = raznosti[i];
+                trk.appendChild(tdk3);
+                if (i == 0) {
+                    tdk3.innerHTML = raznosti[0];
+                }
+                else {
+                    raznosti[i] = raznosti[i].toFixed(2);
+                    tdk3.innerHTML = raznosti[i];
+                }
+                tableAction.appendChild(trk);
+            }
+            let sumPrice = 0;
+            let average = document.getElementById('average');
+            let max = document.getElementById('max');
+            let min = document.getElementById('min');
+            for (let i = 0; i < price.length; i++) {
+                sumPrice = sumPrice + price[i];
+            }
+            let priceAverage = sumPrice / price.length;
+            average.innerHTML = 'Среднее значение: ' + priceAverage;
+
+            max.innerHTML = 'Максимальное значение: ' + Math.max.apply(0, price);
+            min.innerHTML = 'Минимальное значение: ' + Math.min.apply(0, price);
         }
 
     </script>
@@ -103,6 +148,13 @@
 
         <button onclick="tableYm()">Таблица умножения на 109</button>
         <div id="table"></div>
+
+        <button onclick="kurs()">Курс акций "Россети Московский регион"</button>
+        <table border="1" id = 'tableKurs'></table>
+        <div id="average"></div>
+        <div id="min"></div>
+        <div id="max"></div>
+
     </main>
     <footer>
         &copy; Белкин К.В. ФБИ-11, 2курс, 2023
