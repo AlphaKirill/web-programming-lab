@@ -2,7 +2,7 @@ function showDate() {
 
     let out = document.getElementById("current-date");
     let today = new Date();
-    
+
     let out1 = document.getElementById("current-date1");
     let today1 = new Date();
 
@@ -25,4 +25,23 @@ function showDate() {
     out4.innerHTML = 'Дата и время для Kazakh (Kazakhstan) локали: ' + today4.toLocaleString('kk-KZ');
     out5.innerHTML = 'Дата и время для Ukrainian (Ukraine) локали: ' + today5.toLocaleString('uk-UA');
 
+}
+
+function showDaysCount() {
+
+    let today = new Date();
+    let inputDate = document.querySelector('input[type=date]');
+    let showDays = document.getElementById('showDays');
+    let birthday = new Date(inputDate.value);
+    let daysCount = (today - birthday)/1000/60/60/24;
+    daysCount = Math.floor(daysCount);
+    showDays.innerHTML = "Количество дней с даты рождения: " + daysCount;
+}
+
+function clearDate() {
+
+    let inputDate = document.querySelector('input[type=date]');
+    let showDays = document.getElementById('showDays');
+    inputDate.value = "";
+    showDays.innerHTML = "";
 }
